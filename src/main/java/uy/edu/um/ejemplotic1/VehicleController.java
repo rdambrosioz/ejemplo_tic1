@@ -20,6 +20,9 @@ public class VehicleController {
 
     VehicleRepository vehicleRepository;
 
+    @Autowired
+    PersonController personController;
+
 
     @PostMapping("/new")
     public void createVehicle(@RequestBody Vehicle vehicle){
@@ -41,27 +44,53 @@ public class VehicleController {
         return null;
     }
 
-//    @GetMapping("{plate}/owner")
-//    public Person getOwner(@PathVariable("plate") String plate){
-//
-//        Optional<Vehicle> vehicleOptional = vehicleRepository.findById(plate);
-//        Vehicle vehicle = null;
-//
-//        if (vehicleOptional.isPresent()){
-//            vehicle = vehicleOptional.get();
-//        } else{
-//            return null;
-//        }
-//
-//        Long owner_id = vehicle.getOwner().getId();
-//
-//        Person owner = personController.getUser(owner_id);
-//
-//
-//        return owner;
-//    }
+    @GetMapping("/owner/{plate}")
+    public Person getOwner(@PathVariable("plate") String plate){
+
+        Optional<Vehicle> vehicleOptional = vehicleRepository.findById(plate);
+        Vehicle vehicle = null;
+
+        if (vehicleOptional.isPresent()){
+            vehicle = vehicleOptional.get();
+        } else{
+            return null;
+        }
+
+        Long owner_id = null;
+        Optional<Person> ownerOptional = vehicle.getOwners().stream().findFirst();
+        if (ownerOptional.isPresent()){
+            owner_id = ownerOptional.get().getId();
+        } else{
+            return null;
+        }
+
+        Person owner = personController.getUser(owner_id);
 
 
+        return owner;
+    }
+
+
+
+    @GetMapping("/add_owner/{plate}")
+    public Person addOwner(@PathVariable("plate") String plate, @RequestParam Long id) {
+        Optional<Vehicle> vehicleOptional = vehicleRepository.findById(plate);
+        Vehicle vehicle = null;
+
+        if (vehicleOptional.isPresent()) {
+            vehicle = vehicleOptional.get();
+        } else {
+            return null;
+        }
+
+        Person owner = personController.getUser(id);
+
+        vehicle.getOwners().add(owner);
+
+        vehicleRepository.save(vehicle);
+
+        return owner;
+    }
 
 
 }

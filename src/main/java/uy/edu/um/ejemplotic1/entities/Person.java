@@ -3,13 +3,12 @@ package uy.edu.um.ejemplotic1.entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
-//@Embeddable
 @Builder
 @Data
 @AllArgsConstructor
@@ -18,9 +17,10 @@ public class Person {
 
     @Id
     private Long id;
+    @Column(length = 50)
     private String firstName;
+    @Column(length = 50)
     private String lastName;
-
 
 
 }
