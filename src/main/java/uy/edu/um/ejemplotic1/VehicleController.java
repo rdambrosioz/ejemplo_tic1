@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import uy.edu.um.ejemplotic1.entities.Person;
 import uy.edu.um.ejemplotic1.entities.Vehicle;
 
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/vehicle")
@@ -27,6 +27,11 @@ public class VehicleController {
     @PostMapping("/new")
     public void createVehicle(@RequestBody Vehicle vehicle){
 
+//        vehicle.getOwners().stream().forEach((owner) -> {
+//            if (personController.getUser(owner.getId()) == null){
+//                personController.createUser(owner);
+//            }
+//        });
         vehicleRepository.save(vehicle);
     }
 
@@ -45,7 +50,7 @@ public class VehicleController {
     }
 
     @GetMapping("/owner/{plate}")
-    public Person getOwner(@PathVariable("plate") String plate){
+    public Set<Person> getOwner(@PathVariable("plate") String plate){
 
         Optional<Vehicle> vehicleOptional = vehicleRepository.findById(plate);
         Vehicle vehicle = null;
@@ -56,18 +61,14 @@ public class VehicleController {
             return null;
         }
 
-        Long owner_id = null;
-        Optional<Person> ownerOptional = vehicle.getOwners().stream().findFirst();
-        if (ownerOptional.isPresent()){
-            owner_id = ownerOptional.get().getId();
-        } else{
-            return null;
-        }
+        Set<Person> ownersList = new LinkedHashSet<>();
 
-        Person owner = personController.getUser(owner_id);
+        vehicle.getOwners().stream().forEach((owner) -> {
+            ownersList.add(personController.getUser(owner.getId()));
+        });
 
 
-        return owner;
+        return ownersList;
     }
 
 

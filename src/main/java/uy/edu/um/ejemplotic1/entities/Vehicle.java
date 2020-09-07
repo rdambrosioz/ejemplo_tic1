@@ -6,13 +6,16 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Vehicle {
 
 
@@ -26,29 +29,14 @@ public class Vehicle {
     private Integer year;
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Vehicle_Owner",
             joinColumns = { @JoinColumn(name = "vehicle_plate") },
             inverseJoinColumns = { @JoinColumn(name = "owner_id") }
     )
-    private List<Person> owners;
+    private Set<Person> owners;
 
-
-
-
-    public Vehicle(){
-        this.owners = new ArrayList<Person>();
-    }
-
-
-
-    public List<Person> getOwners(){
-        if (owners == null)
-            return new ArrayList<Person>();
-        else
-            return owners;
-    }
 
 
 }
