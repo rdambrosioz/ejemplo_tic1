@@ -1,13 +1,11 @@
-package uy.edu.um.ejemplotic1.entities;
+package uy.edu.um.ejemplotic1.vehicle;
 
 
 import lombok.*;
+import uy.edu.um.ejemplotic1.person.Person;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -27,6 +25,7 @@ public class Vehicle {
     @Column(length = 20)
     private String model;
     private Integer year;
+    private Long estimatedPrice;
 
 
     @ManyToMany(cascade = CascadeType.ALL)

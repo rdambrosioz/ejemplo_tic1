@@ -1,4 +1,4 @@
-package uy.edu.um.ejemplotic1.entities;
+package uy.edu.um.ejemplotic1.person;
 
 
 import lombok.*;

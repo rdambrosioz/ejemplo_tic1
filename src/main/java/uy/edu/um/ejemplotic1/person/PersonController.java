@@ -1,10 +1,11 @@
-package uy.edu.um.ejemplotic1;
+package uy.edu.um.ejemplotic1.person;
 
 
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
-import uy.edu.um.ejemplotic1.entities.Person;
+import uy.edu.um.ejemplotic1.person.PersonRepository;
+import uy.edu.um.ejemplotic1.person.Person;
 
 
 import java.util.Optional;

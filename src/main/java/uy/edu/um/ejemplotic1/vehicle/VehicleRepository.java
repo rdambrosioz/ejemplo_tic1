@@ -1,8 +1,7 @@
-package uy.edu.um.ejemplotic1;
+package uy.edu.um.ejemplotic1.vehicle;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import uy.edu.um.ejemplotic1.entities.Vehicle;
 
 
 @Repository
