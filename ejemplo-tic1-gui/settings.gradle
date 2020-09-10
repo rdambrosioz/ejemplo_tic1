@@ -1,0 +1,4 @@
+rootProject.name = 'ejemplo-tic1-gui'
+
+//include ':ejemplo-tic1-server'
+//project(':ejemplo-tic1-server').projectDir = file('..\\ejemplo-tic1-server')

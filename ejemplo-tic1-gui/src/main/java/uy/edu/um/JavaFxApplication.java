@@ -16,9 +16,13 @@ import uy.edu.um.person.PersonController;
 
 @Component
 public class JavaFxApplication extends Application {
+
     private static ConfigurableApplicationContext applicationContext;
+
     @Autowired
     private PersonController personController;
+
+    static Stage primaryStage;
 
     @Override
     public void init() {
@@ -30,12 +34,15 @@ public class JavaFxApplication extends Application {
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage primaryStage) {
+
+        JavaFxApplication.primaryStage = primaryStage;
         FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(MainMenuController.class);
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 
     @Override
@@ -45,7 +52,6 @@ public class JavaFxApplication extends Application {
     }
 
 
-
     public void personMenu() {
         Stage stage = new Stage();
         FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
@@ -53,5 +59,13 @@ public class JavaFxApplication extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void pitoPressed() {
+        FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(PitoController.class);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
