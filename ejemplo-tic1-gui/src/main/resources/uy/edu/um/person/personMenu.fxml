@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="92.0" prefWidth="136.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uy.edu.um.person.PersonController">
+   <children>
+      <Button fx:id="getFirstPerson" layoutX="19.0" layoutY="33.0" mnemonicParsing="false" onAction="#getFirstPerson" text="Get first person!" />
+   </children>
+</AnchorPane>

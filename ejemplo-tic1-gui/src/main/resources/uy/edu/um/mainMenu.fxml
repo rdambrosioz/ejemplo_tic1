@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="127.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uy.edu.um.MainMenuController">
+   <children>
+      <Button fx:id="personsMenu" layoutX="31.0" layoutY="41.0" mnemonicParsing="false" onAction="#personsMenu" text="Persons Menu" />
+      <Button fx:id="vehicleMenu" layoutX="178.0" layoutY="41.0" mnemonicParsing="false" onAction="#vehicleMenu" text="Vehicle Menu" />
+   </children>
+</AnchorPane>
