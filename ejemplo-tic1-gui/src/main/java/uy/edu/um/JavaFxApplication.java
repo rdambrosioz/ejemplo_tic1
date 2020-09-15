@@ -38,7 +38,8 @@ public class JavaFxApplication extends Application {
 
         JavaFxApplication.primaryStage = primaryStage;
         FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
-        Parent root = fxWeaver.loadView(MainMenuController.class);
+        Parent root = fxWeaver.loadView(MenuMinecraftController.class);
+        root.getStylesheets().add("/uy/edu/um/menuStyle.css");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -61,11 +62,14 @@ public class JavaFxApplication extends Application {
         stage.show();
     }
 
-    public void pitoPressed() {
+    public void singleplayer() {
+
         FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
-        Parent root = fxWeaver.loadView(PitoController.class);
+        Parent root = fxWeaver.loadView(SingleplayerController.class);
+        root.getStylesheets().add("/uy/edu/um/singleplayerStyle.css");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 }

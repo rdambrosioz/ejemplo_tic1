@@ -1,0 +1,10 @@
+
+
+.anchor {
+    -fx-background-image:url('/uy/edu/um/images/menu_background.jpg');
+}
+
+.button {
+    -fx-background-image:url('/uy/edu/um/images/button_singleplayer.png');
+}
+
