@@ -72,4 +72,16 @@ public class JavaFxApplication extends Application {
         primaryStage.show();
 
     }
+
+    public void cancel() {
+
+        FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(MenuMinecraftController.class);
+        root.getStylesheets().add("/uy/edu/um/menuStyle.css");
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    }
+
 }
